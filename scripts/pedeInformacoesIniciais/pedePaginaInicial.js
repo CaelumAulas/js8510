@@ -3,10 +3,11 @@
 // Expressão de função
 // IIFE só pra proteger/criar um escopo
 
-import aceitouSalvar from "/scripts/pedeInformacoesIniciais/aceitouSalvar.js"
+import { aceitouSalvar } from "/scripts/storage/aceitouSalvar.js"
+import paginaInicial from "/scripts/storage/paginaInicial.js"
 
 if(aceitouSalvar === true) {
-    let enderecoInicial = localStorage.getItem('paginaInicial')
+    let enderecoInicial = paginaInicial
 
     if (!enderecoInicial) {
         enderecoInicial = prompt("Digite o endereço inicial")
