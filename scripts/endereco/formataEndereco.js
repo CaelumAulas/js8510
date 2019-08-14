@@ -16,6 +16,13 @@ export function formataEndereco(endereco) {
         throw erro
     }
 
+    // https://regex101.com/r/d0DKJn/1/
+    const experessaoURL = /.\..{2,}$/
+    // if(endereco.match(experessaoURL) === null) {
+    if(!experessaoURL.test(endereco)) {
+        alert("Inválido")
+    }
+
     if (endereco.substring(0, 7) !== "http://" &&
         endereco.substring(0, 8) !== "https://") {
         endereco = "http://" + endereco;
