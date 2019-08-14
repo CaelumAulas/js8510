@@ -23,9 +23,6 @@ if(aceitouSalvar === true) {
         }
 
         salvar(enderecoInicial)
-
-        $inputEndereco.value = enderecoInicial
-        $iframeJanela.src = enderecoInicial
     }
 }
 

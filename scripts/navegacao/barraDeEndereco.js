@@ -6,7 +6,9 @@ function mudaEnderecoCompleto() {
     $inputEndereco.value = $iframeJanela.contentWindow.location.href
 }
 
-$inputEndereco.onfocus = mudaEnderecoCompleto
-$inputEndereco.onblur = mudaEnderecoResumido
+$inputEndereco.addEventListener('focus', mudaEnderecoCompleto)
+$inputEndereco.addEventListener('blur', mudaEnderecoResumido)
 
-$iframeJanela.onload = mudaEnderecoResumido
+// $iframeJanela é um EventEmmiter
+$iframeJanela.addEventListener("load", mudaEnderecoResumido)
+
