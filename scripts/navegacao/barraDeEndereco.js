@@ -19,10 +19,10 @@ $inputEndereco.addEventListener('keyup', function carregarDigitado() {
     const evento = arguments[0]
     const queNaoExiste = arguments[1]
     
-    console.log(arguments)
-    console.log("Nº de argumentos", arguments.length)
-    console.log("Nao existe: ", queNaoExiste)
-    console.log(evento)
+    // console.log(arguments)
+    // console.log("Nº de argumentos", arguments.length)
+    // console.log("Nao existe: ", queNaoExiste)
+    // console.log(evento)
 
     if(evento.key === 'Enter') {        
         const enderecoDigitado = this.value

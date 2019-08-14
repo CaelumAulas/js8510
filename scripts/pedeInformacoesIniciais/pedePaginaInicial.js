@@ -5,6 +5,7 @@
 
 import { aceitouSalvar } from "/scripts/storage/aceitouSalvar.js"
 import { paginaInicial, salvar } from "/scripts/storage/paginaInicial.js"
+import { formataEndereco } from "/scripts/endereco/formataEndereco.js"
 
 if(aceitouSalvar === true) {
     let enderecoInicial = paginaInicial
@@ -15,14 +16,10 @@ if(aceitouSalvar === true) {
     // const isEnderecoPreenchido = enderecoInicial !== null && enderecoInicial !== ""
 
     if(enderecoInicial){
-        if (
-            enderecoInicial.substring(0, 7) !== "http://"  &&
-            enderecoInicial.substring(0, 8) !== "https://" 
-        ) {
-            enderecoInicial = "http://" + enderecoInicial
-        }
+        enderecoInicial = formataEndereco(enderecoInicial);
 
         salvar(enderecoInicial)
     }
 }
+
 
