@@ -4,7 +4,7 @@
 // IIFE só pra proteger/criar um escopo
 
 import { aceitouSalvar } from "/scripts/storage/aceitouSalvar.js"
-import paginaInicial from "/scripts/storage/paginaInicial.js"
+import { paginaInicial, salvar } from "/scripts/storage/paginaInicial.js"
 
 if(aceitouSalvar === true) {
     let enderecoInicial = paginaInicial
@@ -22,7 +22,7 @@ if(aceitouSalvar === true) {
             enderecoInicial = "http://" + enderecoInicial
         }
 
-        localStorage.setItem("paginaInicial", enderecoInicial)
+        salvar(enderecoInicial)
 
         $inputEndereco.value = enderecoInicial
         $iframeJanela.src = enderecoInicial
