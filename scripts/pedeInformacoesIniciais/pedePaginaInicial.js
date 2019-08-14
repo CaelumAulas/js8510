@@ -17,7 +17,6 @@ if(aceitouSalvar === true) {
 
     if(enderecoInicial){
         enderecoInicial = formataEndereco(enderecoInicial);
-
         salvar(enderecoInicial)
     }
 }
