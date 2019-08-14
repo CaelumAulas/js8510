@@ -1,4 +1,8 @@
 export function formataEndereco(endereco) {
+    
+    if(endereco === null || endereco === "") {
+        return 'blank'
+    }
 
     if(typeof endereco !== "string") {
         const erro = Error(`

@@ -10,7 +10,6 @@ const paginaParaCarregar = paginaAtual === null
 
 carregar(paginaParaCarregar)
 
-
 $iframeJanela.addEventListener('load', function salvaPaginaAtual() {
     sessionStorage.setItem(
         'paginaAtual', 

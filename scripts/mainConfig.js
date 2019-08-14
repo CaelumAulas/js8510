@@ -27,4 +27,24 @@ function salvar() {
     funcaoAceitouSalvar()   
 }
 
+$botaoApagar.addEventListener('click', function apagaTudo(){
+    const listaDeProprieadesFixas = ["aceitouTermos", "aceitouSalvar"]
 
+    const listaDasPropriedades = Object.keys(localStorage)
+    for (const nomeDaProp of listaDasPropriedades) {
+        const ehFixa = listaDeProprieadesFixas.includes(nomeDaProp)
+        if(!ehFixa) localStorage.removeItem(nomeDaProp)
+    }
+
+    // Apagar tudo menos paginaAtual
+    const listaDePropriedadesFixasSesion = ['paginaAtual']
+    const listaDasPropriedadesSession = Object.keys(sessionStorage)
+
+    for(const nomeDaProp of listaDasPropriedadesSession) {
+        const ehFixa = listaDePropriedadesFixasSesion.includes(nomeDaProp)
+        if(!ehFixa) sessionStorage.removeItem(nomeDaProp)
+    }
+
+
+    window.location.reload()
+})
