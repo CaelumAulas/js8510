@@ -32,7 +32,9 @@ $botaoApagar.addEventListener('click', function apagaTudo(){
 
     const listaDasPropriedades = Object.keys(localStorage)
     for (const nomeDaProp of listaDasPropriedades) {
+
         const ehFixa = listaDeProprieadesFixas.includes(nomeDaProp)
+        
         if(!ehFixa) localStorage.removeItem(nomeDaProp)
     }
 
@@ -44,7 +46,6 @@ $botaoApagar.addEventListener('click', function apagaTudo(){
         const ehFixa = listaDePropriedadesFixasSesion.includes(nomeDaProp)
         if(!ehFixa) sessionStorage.removeItem(nomeDaProp)
     }
-
 
     window.location.reload()
 })
