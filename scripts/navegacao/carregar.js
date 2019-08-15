@@ -9,7 +9,9 @@ export function carregar(endereco) {
         $iframeJanela.src = endereco
     } catch(erro) {
         if(erro instanceof CakeEnderecoInvalidoError) {
-            alert("busca: " + erro.endereco)
+            const termoBusca = encodeURIComponent(erro.endereco)
+            const urlBusca = `https://www.google.com/search?q=${termoBusca}`
+            carregar(urlBusca)
         } else {
             throw erro
         }

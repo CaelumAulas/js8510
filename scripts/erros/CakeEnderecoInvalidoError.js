@@ -15,11 +15,6 @@ Object.setPrototypeOf(
 
 
 
-
-
-
-
-
 //const objeto = Component()
 //objeto.constructor = CakeEnderecoInvalidoError
 
