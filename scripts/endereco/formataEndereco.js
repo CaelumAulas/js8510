@@ -1,3 +1,5 @@
+import { CakeEnderecoInvalidoError } from "/scripts/erros/CakeEnderecoInvalidoError.js";
+
 export function formataEndereco(endereco) {
     
     if(endereco === null || endereco === "") {
@@ -5,7 +7,8 @@ export function formataEndereco(endereco) {
     }
 
     if(typeof endereco !== "string") {
-        const erro = Error(`
+        // função construtora
+        const erro = TypeError(`
             Endereço inválido:
                 ${endereco}
             Tipo inválido:
@@ -16,11 +19,12 @@ export function formataEndereco(endereco) {
         throw erro
     }
 
-    // https://regex101.com/r/d0DKJn/1/
-    const experessaoURL = /.\..{2,}$/
+    // https://regex101.com/r/9Pcs6v/2/
+    const experessaoURL = /^[\S]+\.[\S]{2,}(\/[^\/\s]+)*$/
+    
     // if(endereco.match(experessaoURL) === null) {
     if(!experessaoURL.test(endereco)) {
-        alert("Inválido")
+        throw CakeEnderecoInvalidoError("URL inválida: " + endereco)
     }
 
     if (endereco.substring(0, 7) !== "http://" &&

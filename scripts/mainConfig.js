@@ -1,7 +1,7 @@
 import { paginaInicial, salvar as salvarPaginaInicial } from "/scripts/storage/paginaInicial.js"
 import { aceitouSalvar, salvarAceitou, salvarNaoAceitou } from "/scripts/storage/aceitouSalvar.js"
 import { formataEndereco } from "/scripts/endereco/formataEndereco.js"
-
+import { CakeEnderecoInvalidoError } from "/scripts/erros/CakeEnderecoInvalidoError.js"
 
 $inputPaginaInicial.value = paginaInicial
 $inputAceitouSalvar.checked = aceitouSalvar
@@ -13,9 +13,26 @@ $botaoSalvar.onclick = salvar
 // Toda declaração sofre hoisting
 // Function declaration
 function salvar() {
-    const enderecoFormatado = formataEndereco($inputPaginaInicial.value)
-    $inputPaginaInicial.value = enderecoFormatado
-    salvarPaginaInicial(enderecoFormatado)
+    try {
+        const enderecoFormatado = formataEndereco($inputPaginaInicial.value)
+        
+        $inputPaginaInicial.value = enderecoFormatado
+        salvarPaginaInicial(enderecoFormatado)
+    } catch(erro) {
+        // verificar o tipo do objeto
+        if(erro instanceof CakeEnderecoInvalidoError){
+            // se der erro
+            alert("Pagina inicial inválida")
+            $inputPaginaInicial.value = paginaInicial
+            $inputPaginaInicial.focus()
+        } else if(erro instanceof Error) {
+            $inputPaginaInicial.value = ""
+            console.warn(erro.message)
+        } else {
+            throw erro
+        }
+    }
+
     
     // Expressão de função
     // Função como valor de uma variável
