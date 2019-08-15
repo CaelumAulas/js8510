@@ -16,8 +16,16 @@ if(aceitouSalvar === true) {
     // const isEnderecoPreenchido = enderecoInicial !== null && enderecoInicial !== ""
 
     if(enderecoInicial){
-        enderecoInicial = formataEndereco(enderecoInicial);
-        salvar(enderecoInicial)
+        try {
+            enderecoInicial = formataEndereco(enderecoInicial);
+            salvar(enderecoInicial)
+        } catch(erro) {
+            if (erro.message !== undefined){
+                console.warn(erro.message)
+            } else {
+                console.warn(erro)
+            }
+        }
     }
 }
 

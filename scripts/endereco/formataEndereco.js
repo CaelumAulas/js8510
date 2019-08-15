@@ -2,7 +2,7 @@ import { CakeEnderecoInvalidoError } from "/scripts/erros/CakeEnderecoInvalidoEr
 
 export function formataEndereco(endereco) {
     
-    if(endereco === null || endereco === "") {
+    if(endereco === null || endereco === "" || endereco === "blank") {
         return 'blank'
     }
 
@@ -19,12 +19,13 @@ export function formataEndereco(endereco) {
         throw erro
     }
 
-    // https://regex101.com/r/9Pcs6v/2/
-    const experessaoURL = /^[\S]+\.[\S]{2,}(\/[^\/\s]+)*$/
+    // https://regex101.com/r/9Pcs6v/3/
+    const experessaoURL = /^[\S]+[\.\:][\S]{2,}(\/[^\/\s]+)*$/
     
     // if(endereco.match(experessaoURL) === null) {
     if(!experessaoURL.test(endereco)) {
-        throw CakeEnderecoInvalidoError("URL inválida: " + endereco)
+        const erro = CakeEnderecoInvalidoError(endereco)
+        throw erro
     }
 
     if (endereco.substring(0, 7) !== "http://" &&

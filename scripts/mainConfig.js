@@ -21,8 +21,7 @@ function salvar() {
     } catch(erro) {
         // verificar o tipo do objeto
         if(erro instanceof CakeEnderecoInvalidoError){
-            // se der erro
-            alert("Pagina inicial inválida")
+            alert("Pagina inicial inválida: " + erro.endereco)
             $inputPaginaInicial.value = paginaInicial
             $inputPaginaInicial.focus()
         } else if(erro instanceof Error) {
