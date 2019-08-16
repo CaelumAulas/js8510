@@ -6,6 +6,7 @@ const _listaFavoritos = JSON.parse(localStorage.getItem('favoritos')) || []
 // Duplicando a lista e congelando
 const listaFavoritosPublica = Object.freeze([..._listaFavoritos])
 
+// JavaScript Object Notation
 function adiciona(favorito) {
     if(aceitouSalvar) {
         _listaFavoritos.push(favorito)

@@ -1,5 +1,11 @@
-import { paginaInicial, salvar as salvarPaginaInicial } from "/scripts/storage/paginaInicial.js"
-import { aceitouSalvar, salvarAceitou, salvarNaoAceitou } from "/scripts/storage/aceitouSalvar.js"
+import {
+    paginaInicial, 
+    salvar as salvarPaginaInicial, 
+    aceitouSalvar, 
+    salvarAceitou, 
+    salvarNaoAceitou
+} from "/scripts/storage/index.js"
+
 import { formataEndereco } from "/scripts/endereco/formataEndereco.js"
 import { CakeEnderecoInvalidoError } from "/scripts/erros/CakeEnderecoInvalidoError.js"
 
