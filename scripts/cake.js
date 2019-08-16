@@ -1,3 +1,4 @@
+// Arrow function
 ;(() => {
   //isElectron function from: https://github.com/cheton/is-electron/blob/4acaa6cab8b527c57c6e56381e6f9766d57c56b2/index.js
   window.isElectron = (function isElectron() {

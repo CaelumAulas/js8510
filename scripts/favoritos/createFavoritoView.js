@@ -5,8 +5,8 @@ import { carregar } from '/scripts/navegacao/carregar.js';
 export class FavoritoView {
     constructor(nome, endereco) {
 
-        this.nome = nome
-        this.descricao = endereco || nome
+        this.nome = nome || endereco
+        this.descricao = endereco
         
         this._endereco = endereco
 
@@ -24,7 +24,8 @@ export function FavoritoViewNaRaca(nome, endereco) {
         throw new Error("Não chama sem new")
     }
 
-    this.descricao = endereco || nome
+    this.nome = nome || endereco
+    this.descricao = endereco
     this.endereco = endereco
 
     this.onclick = function() {
@@ -43,8 +44,8 @@ FavoritoViewNaRaca.prototype.onclick = function() {
 
 export function createFavoritoView(nome, endereco) {
     return {
-        nome: nome,
-        descricao: endereco || nome,
+        nome: nome || endereco,
+        descricao: endereco,
         onclick: function () {
             carregar(endereco)
         }

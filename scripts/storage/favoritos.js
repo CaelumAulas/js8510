@@ -15,16 +15,27 @@ function adiciona(favorito) {
 }
 
 function ehFavorito(endereco) {
-    for(const favorito of _listaFavoritos) {
-        if(favorito.endereco === endereco) {
-            return true
-        }
-    }
-    return false
+    return _listaFavoritos.some(
+        favorito =>  favorito.endereco === endereco
+    )
+}
+
+function remove(endereco){ 
+    const favoritoRemovido = _listaFavoritos.find(
+        favorito => favorito.endereco === endereco
+    )
+
+    const posicaoFavorito = _listaFavoritos.indexOf(favoritoRemovido)
+    _listaFavoritos.splice(posicaoFavorito, 1)
+
+    localStorage.setItem('favoritos', JSON.stringify(_listaFavoritos))
+
+    return favoritoRemovido
 }
 
 export {
     listaFavoritosPublica as listaFavoritos,
     adiciona,
+    remove,
     ehFavorito
 }

@@ -26,10 +26,16 @@ $iframeJanela.addEventListener("load", function() {
     }
 })
 
-// TODO isolar criação do objeto
-$botaoFavoritos.addEventListener('click', function adicionaNaBarra() {
-    marcaEstrela()
+$botaoFavoritos.addEventListener('click', function removeDaBarra() {
     const enderecoFavorito = $iframeJanela.contentWindow.location.href
+    if(storage.ehFavorito(enderecoFavorito)) {
+        remove(enderecoFavorito)
+    } else {
+        adiciona(enderecoFavorito)
+    }
+})
+
+function adiciona(enderecoFavorito) {
     const nomeFavorito = prompt("Qual o nome do favorito?")
 
     const favoritoParaSalvar = {
@@ -44,9 +50,17 @@ $botaoFavoritos.addEventListener('click', function adicionaNaBarra() {
     // Se verificassem instanceof $CakeFavorite
     const favoritoParaExibir = new FavoritoView(nomeFavorito, enderecoFavorito)
     
-    $Cake.addFavorite(favoritoParaExibir)
     storage.adiciona(favoritoParaSalvar)
+    
+    $Cake.addFavorite(favoritoParaExibir)
+    marcaEstrela()
     
     console.dir(favoritoParaExibir)
     console.log("É instanceof FavoritoView: ", favoritoParaExibir instanceof FavoritoView)
-})
+}
+
+function remove(enderecoFavorito) {
+    desmarcaEstrela()
+    const favoritoRemovido = storage.remove(enderecoFavorito)
+    $Cake.removeFavorite(favoritoRemovido)
+}
