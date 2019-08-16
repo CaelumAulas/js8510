@@ -1,13 +1,19 @@
-import { aceitouSalvar } from "/scripts/storage/aceitouSalvar.js";
+import { aceitouSalvar } from "/scripts/storage/aceitouSalvar.js"
 
-const listaFavoritosPrivada = JSON.parse(localStorage.getItem('favoritos')) || []
+// underscore no começo significa privado
+const _listaFavoritos = JSON.parse(localStorage.getItem('favoritos')) || []
 
 // Duplicando a lista e congelando
-export const listaFavoritos = Object.freeze([...listaFavoritosPrivada])
+const listaFavoritosPublica = Object.freeze([..._listaFavoritos])
 
-export function adiciona(favorito) {
+function adiciona(favorito) {
     if(aceitouSalvar) {
-        listaFavoritosPrivada.push(favorito)
-        localStorage.setItem('favoritos', JSON.stringify(listaFavoritosPrivada))
+        _listaFavoritos.push(favorito)
+        localStorage.setItem('favoritos', JSON.stringify(_listaFavoritos))
     }
+}
+
+export {
+    listaFavoritosPublica as listaFavoritos,
+    adiciona
 }
