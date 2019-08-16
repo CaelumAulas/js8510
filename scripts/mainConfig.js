@@ -18,12 +18,25 @@ $botaoSalvar.onclick = salvar
 // Declaraçao de função
 // Toda declaração sofre hoisting
 // Function declaration
-function salvar() {
+async function salvar() {
     try {
         const enderecoFormatado = formataEndereco($inputPaginaInicial.value)
+        $inputPaginaInicial.value = "verificando... " + enderecoFormatado 
         
-        $inputPaginaInicial.value = enderecoFormatado
-        salvarPaginaInicial(enderecoFormatado)
+        // o que retorna de fetch(enderecoFormatado) é instanceof Promise
+        try {
+            const resposta = await fetch(enderecoFormatado)
+            if(resposta.status === 404) {
+                throw new CakeEnderecoInvalidoError(enderecoFormatado)
+            } else {
+                $inputPaginaInicial.value = enderecoFormatado
+                salvarPaginaInicial(enderecoFormatado)
+            }
+            resposta
+        } catch(erro) {
+            throw new CakeEnderecoInvalidoError(enderecoFormatado)
+        }
+
     } catch(erro) {
         // verificar o tipo do objeto
         if(erro instanceof CakeEnderecoInvalidoError){
