@@ -2,9 +2,8 @@ import { carregar } from '/scripts/navegacao/carregar.js';
 
 
 // carga cognitiva
-export class FavoritoView extends $CakeFavorite{
+export class FavoritoView {
     constructor(nome, endereco) {
-        super()
 
         this.nome = nome
         this.descricao = endereco || nome
@@ -37,7 +36,7 @@ FavoritoViewNaRaca.prototype.onclick = function() {
     carregar(this.endereco)
 }
 
-FavoritoViewNaRaca.prototype.__proto__ = $CakeFavorite.prototype
+// FavoritoViewNaRaca.prototype.__proto__ = $CakeFavorite.prototype
 
 // Função factory
 // Função fábrica

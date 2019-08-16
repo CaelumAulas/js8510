@@ -14,7 +14,17 @@ function adiciona(favorito) {
     }
 }
 
+function ehFavorito(endereco) {
+    for(const favorito of _listaFavoritos) {
+        if(favorito.endereco === endereco) {
+            return true
+        }
+    }
+    return false
+}
+
 export {
     listaFavoritosPublica as listaFavoritos,
-    adiciona
+    adiciona,
+    ehFavorito
 }
